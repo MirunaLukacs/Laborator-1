@@ -6,6 +6,8 @@ function on_cam_error(err) {
 }
 alert("error." + err.message);
 var constraints = { audio: false, video: true };
+video.addEventListener("touchstart", capteaza);
+video.addEventListener("mousedown", capteaza);
 navigator.mediaDevices.getUserMedia(constraints)
     .then(on_cam_success)
     .catch(on_cam_error);
@@ -15,4 +17,5 @@ function capteaza() {
     c.height = video.height;
     var ctx = c.getContext("2d");
     ctx.drawImage(video, 0, 0, 640, 480);
+
 } 
